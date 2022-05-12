@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useAddress, useDisconnect, useMetamask } from "@thirdweb-dev/react";
+import toast, { Toaster } from "react-hot-toast";
 
 import { client } from "../lib/sanityClient";
 
@@ -20,6 +21,18 @@ const Home = () => {
   const disconnect = useDisconnect();
   // ---
 
+  const welcomeUser = (userName, toastHandler = toast) => {
+    toastHandler.success(
+      `Welcome back ${userName === "Unnamed" ? userName : ""}`,
+      {
+        style: {
+          backgroundColor: "#04111d",
+          color: "#fff",
+        },
+      }
+    );
+  };
+
   useEffect(() => {
     if (!address) return;
 
@@ -32,12 +45,15 @@ const Home = () => {
       };
 
       const result = await client.createIfNotExists(userDoc);
-      console.log("result: ", result);
+
+      welcomeUser(result.userName);
     })();
   }, [address]);
 
   return (
     <div className={style.wrapper}>
+      <Toaster position="top-center" reverseOrder={false} />
+
       {address ? (
         <>
           <Header />
