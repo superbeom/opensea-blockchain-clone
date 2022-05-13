@@ -21,44 +21,44 @@ const style = {
   headerIcon: `text-[#8a939b] text-3xl font-black px-4 hover:text-white cursor-pointer`,
 };
 
-const Header = () => {
-  return (
-    <div className={style.wrapper}>
-      <Link href="/">
-        <div className={style.logoContainer}>
-          <Image src={openseaLogo} width={40} height={40} />
-          <div className={style.logoText}>Opensea</div>
-        </div>
-      </Link>
+const Header = () => (
+  <div className={style.wrapper}>
+    <Link href="/">
+      <div className={style.logoContainer}>
+        <Image src={openseaLogo} width={40} height={40} />
+        <div className={style.logoText}>Opensea</div>
+      </div>
+    </Link>
 
-      <div className={style.searchBar}>
-        <div className={style.searchIcon}>
-          <AiOutlineSearch />
-        </div>
-
-        <input
-          className={style.searchInput}
-          placeholder="Search items, collections and accounts"
-        />
+    <div className={style.searchBar}>
+      <div className={style.searchIcon}>
+        <AiOutlineSearch />
       </div>
 
-      <div className={style.headerItems}>
-        <Link href={"/collections/0xB24190641D9eb6232B2aefD7b54Da75374310E01"}>
-          <div className={style.headerItem}>Collections</div>
-        </Link>
-        <div className={style.headerItem}>Stats</div>
-        <div className={style.headerItem}>Resources</div>
-        <div className={style.headerItem}>Create</div>
+      <input
+        className={style.searchInput}
+        placeholder="Search items, collections and accounts"
+      />
+    </div>
 
-        <div className={style.headerIcon}>
-          <CgProfile />
-        </div>
-        <div className={style.headerIcon}>
-          <MdOutlineAccountBalanceWallet />
-        </div>
+    <div className={style.headerItems}>
+      <Link
+        href={`/collections/${process.env.NEXT_PUBLIC_THIRDWEB_NFT_COLLECTION_CONTRACT_ADDRESS_ID}`}
+      >
+        <div className={style.headerItem}>Collections</div>
+      </Link>
+      <div className={style.headerItem}>Stats</div>
+      <div className={style.headerItem}>Resources</div>
+      <div className={style.headerItem}>Create</div>
+
+      <div className={style.headerIcon}>
+        <CgProfile />
+      </div>
+      <div className={style.headerIcon}>
+        <MdOutlineAccountBalanceWallet />
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default Header;
