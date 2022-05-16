@@ -145,14 +145,14 @@ const Collection = () => {
         </div>
 
         <div className={style.midRow}>
-          <div className={style.title}>{collection?.title ?? "None"}</div>
+          <div className={style.title}>{collection?.title ?? "Unnamed"}</div>
         </div>
 
         <div className={style.midRow}>
           <div className={style.createdBy}>
             Created by{" "}
             <span className="text-[#2081e2]">
-              {collection?.creator ?? "None"}
+              {collection?.creator ?? "Unnamed"}
             </span>
           </div>
         </div>
@@ -211,7 +211,7 @@ const Collection = () => {
           <NFTCard
             key={id}
             nftItem={nft.metadata}
-            title={collection?.title ?? "None"}
+            title={collection?.title ?? "Unnamed"}
             listings={listings}
           />
         ))}
